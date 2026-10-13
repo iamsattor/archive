@@ -1,0 +1,26 @@
+{
+    "name": "forge/archive",
+    "description": "Archive extraction and creation for macOS",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.5",
+        "symfony/filesystem": "^8.1",
+        "symfony/process": "^8.1",
+        "symfony/string": "^8.1"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Forge\\Archive\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "check": "phpstan analyse"
+    }
+}
