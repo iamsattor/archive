@@ -21,13 +21,10 @@ final class Str
      */
     public static function format(string $template, array $values): string
     {
-        $text = u($template);
-
-        foreach ($values as $key => $value) {
-            $text = $text->replace(self::placeholder($key), (string) $value);
-        }
-
-        return $text->toString();
+        return strtr($template, array_combine(
+            array_map(self::placeholder(...), array_keys($values)),
+            array_map(static fn (string|int $value): string => (string) $value, array_values($values)),
+        ));
     }
 
     /**
@@ -35,6 +32,6 @@ final class Str
      */
     private static function placeholder(string $key): string
     {
-        return UnicodeString::fromCodePoints(40)->append($key, UnicodeString::fromCodePoints(41)->toString())->toString();
+        return u()->join([UnicodeString::fromCodePoints(40)->toString(), $key, UnicodeString::fromCodePoints(41)->toString()])->toString();
     }
 }
