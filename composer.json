@@ -10,17 +10,24 @@
         "symfony/string": "^8.1"
     },
     "require-dev": {
-        "phpstan/phpstan": "^2.3"
+        "phpstan/phpstan": "^2.3",
+        "phpunit/phpunit": "^13.4"
     },
     "autoload": {
         "psr-4": {
             "Forge\\Archive\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Forge\\Archive\\Tests\\": "tests/"
+        }
+    },
     "config": {
         "sort-packages": true
     },
     "scripts": {
-        "check": "phpstan analyse"
+        "check": "phpstan analyse",
+        "test": "phpunit"
     }
 }
